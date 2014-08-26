@@ -11,17 +11,6 @@
     0% {
       top: 0;
     }
-    /*33% {
-	      bottom: 340px;
-	      left: 340px;
-	      background: #ffd630;
-	   }
-
-	   66% {
-	      bottom: 340px;
-	      left: 40px;
-	      background: #ffd630;
-	   }*/
     100% {
       top: -100%;
       opacity: 0;
@@ -35,6 +24,24 @@
       bottom: 0;
     }
   }
+
+  @-webkit-keyframes animate-down-hide {
+    0% {
+      top: 0;
+      opacity: 1;
+    }
+    100% {
+      top: 100%;
+      opacity: 0;
+    }
+  }
+  @-webkit-keyframes animate-down-show {
+    100% {
+      bottom: 0;
+      opacity: 1;
+    }
+  }
+
   .scene.hide {
     -webkit-animation-name: animate-up-hide;
     -webkit-animation-duration: 3s;
@@ -55,6 +62,28 @@
     -webkit-animation-play-state: running;
     -webkit-animation-fill-mode: forwards;
   }
+
+  .scene.swipeDownHide {
+    -webkit-animation-name: animate-down-hide;
+    -webkit-animation-duration: 3s;
+    -webkit-animation-timing-function: ease;
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-direction: normal;
+    -webkit-animation-delay: 0;
+    -webkit-animation-play-state: running;
+    -webkit-animation-fill-mode: forwards;
+  }
+  .scene.swipeDownShow {
+    -webkit-animation-name: animate-down-show;
+    -webkit-animation-duration: 1s;
+    -webkit-animation-timing-function: ease;
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-direction: normal;
+    -webkit-animation-delay: 0;
+    -webkit-animation-play-state: running;
+    -webkit-animation-fill-mode: forwards;
+  }
+
   </style>
 
 
@@ -244,25 +273,54 @@
   </div>
 
   <script src="js/jquery-1.9.1.min.js"></script>
+  <script src="js/quo.js"></script>
+
   <script type="text/javascript">
   $(document).ready(function() {
-    console.log('jquery is ready');
 
-    //register a few click event
-    $('a.gotoscene2').click(function() {
-      $('div#scene-1').addClass('hide');
-      $('div#scene-2').addClass('show');
+    var page = 1;
+
+    $$('.viewport').swipeUp(function() {
+      console.log('div#scene-' + page);
+      console.log('div#scene-' + (page+1));
+      $('div#scene-' + (page)).removeClass('swipeDownShow');
+      $('div#scene-' + (page)).addClass('hide');
+      $('div#scene-' + (page + 1)).removeClass('swipeDownHide');
+      $('div#scene-' + (page + 1)).addClass('show');
+      page += 1;
     });
 
-    $('a.gotoscene3').click(function() {
-      $('div#scene-2').addClass('hide');
-      $('div#scene-3').addClass('show');
+    $$('.viewport').swipeDown(function() {
+      console.log('div#scene-' + page);
+      console.log('div#scene-' + (page-1));
+      $('div#scene-' + (page)).removeClass('show');
+      $('div#scene-' + (page)).addClass('swipeDownHide');
+      $('div#scene-' + (page - 1)).removeClass('hide');
+      $('div#scene-' + (page - 1)).addClass('swipeDownShow');
+      page -= 1;
     });
 
-    $('a.gotoscene4').click(function() {
-      $('div#scene-3').addClass('hide');
-      $('div#scene-4').addClass('show');
-    });
+
+    // $$('#scene-1').swipeUp(function() {
+    //   $('div#scene-1').addClass('hide');
+    //   $('div#scene-2').addClass('show');
+    // });
+
+    // //register a few click event
+    // $$('#scene-2').swipeUp(function() {
+    //   $('div#scene-1').addClass('hide');
+    //   $('div#scene-2').addClass('show');
+    // });
+
+    // $$('#scene-3').swipeUp(function() {
+    //   $('div#scene-2').addClass('hide');
+    //   $('div#scene-3').addClass('show');
+    // });
+
+    // $$('#scene-4').swipeUp(function() {
+    //   $('div#scene-3').addClass('hide');
+    //   $('div#scene-4').addClass('show');
+    // });
 
 
   });
