@@ -1,0 +1,93 @@
+
+@-webkit-keyframes animate-up-hide {
+
+    100% {
+
+        top: -100%;
+
+        opacity: 0;
+
+    }
+
+}
+
+@-webkit-keyframes animate-up-show {
+
+    100% {
+
+        top: 0;
+
+        opacity: 1;
+
+    }
+
+}
+
+html, body {
+
+    font-family: Arial, Helvetica, sans-serif;
+
+}
+
+div.scene {
+
+    position: absolute;
+
+    overflow: hidden;
+
+    /*display: none; */
+
+    width: 100%;
+
+    height: 100%;
+
+    background: none;
+
+    z-index: 999;
+
+    -webkit-transition: all 2s ease;
+	-moz-transition: all 2s ease;
+	-ms-transition: all 2s ease;
+	-o-transition: all 2s ease;
+	transition: all 2s ease;
+
+}
+
+div.scene img.bg {
+
+    width: 100%;
+
+    height: 100%;
+
+}
+
+div.scene.active {
+
+    top: 0;
+
+    opacity: 1;
+
+}
+
+div.scene.up {
+
+    top: -100%;
+
+    opacity: 0;
+
+    -webkit-transition: all 3s ease;
+	-moz-transition: all 3s ease;
+	-ms-transition: all 3s ease;
+	-o-transition: all 3s ease;
+	transition: all 3s ease;
+
+}
+
+div.scene.down {
+
+    top: 100%;
+
+    opacity: 0;
+
+
+}
