@@ -27,7 +27,11 @@ $(document).ready(function() {
 		console.log('image ', e.resource.imageNumber, ' loaded');
 		console.log('progress: ', e.completedCount, '/', e.totalCount);
 
-		$('div#scene-'+ e.resource.imageNumber + ' img.bg').attr('src', 'images/' + e.resource.imageNumber + '.jpg');
+
+		// $('div#scene-'+ e.resource.imageNumber + ' img.bg').attr('src', 'images/' + e.resource.imageNumber + '.jpg');
+		var image = '<img class="bg" src="images/'+ e.resource.imageNumber +'.jpg">';
+		$('div#scene-'+ e.resource.imageNumber).prepend(image);
+		// $('div#scene-'+ e.resource.imageNumber + ' img.bg').attr('src', 'images/' + e.resource.imageNumber + '.jpg');
 
 		$('.loader .progress').text('Loading...' + parseInt(100*e.completedCount/e.totalCount) + '%' );
 
@@ -42,6 +46,11 @@ $(document).ready(function() {
 	    $$('.viewport').swipeUp(function() {
 	    	swipeUp();
 	    });
+
+	    $$('.viewport').tap(function() {
+	    	$('#scene-1.active div.envelop-container').addClass('open');
+	    });
+
 
 	}); 
 

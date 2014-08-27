@@ -54,6 +54,7 @@ div.scene {
 }
 
 div.scene img.bg {
+	position: absolute;
 
     width: 100%;
 
@@ -89,5 +90,131 @@ div.scene.down {
 
     opacity: 0;
 
+}
+
+
+
+.sprite {
+	position: absolute;
+}
+
+
+
+
+
+/* entire container, keeps perspective */
+div.envelop-container {
+	perspective: 1000;
+	/*position: relative;*/
+}
+
+
+/* flip speed goes here */
+div.envelop {
+	/*transition: transform 6s, top 6s;*/
+	/*transition: transform 1000ms 0ms, height 300ms 150ms, margin-top 300ms 150ms;*/
+	/*-ms-transition: -ms-transform 1000ms 0ms, height 300ms 150ms, margin-top 300ms 150ms;*/
+	/*-moz-transition: -moz-transform 1000ms 0ms, height 300ms 150ms, margin-top 300ms 150ms;*/
+	/*-o-transition: -o-transform 1000ms 0ms, height 300ms 150ms, margin-top 300ms 150ms;*/
+	
+	/*-webkit-transition: -webkit-transform 2s ease, margin-top 1s 2s ease;*/
+	-webkit-transition: all 2s ease;	
+
+	transform-style: preserve-3d;
+}
+
+/* flip the pane when hovered */
+div.envelop-container.open div.envelop {
+	-webkit-transform: rotateX(180deg);
+	/*transform-origin: 0 50%;*/
+	margin-top: -70px;
+
+/*
+	top: 50px;
+	-webkit-transition: top 3s ease;
+	-moz-transition: top 3s ease;
+	-ms-transition: top 3s ease;
+	-o-transition: top 3s ease;
+	transition: top 3s ease;*/
 
 }
+
+/*.face {
+  position: absolute;
+  -webkit-backface-visibility: hidden;
+}
+
+.face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+}
+.face.back {
+  display: block;
+  transform: rotateY(180deg);
+  box-sizing: border-box;
+  padding: 10px;
+  color: white;
+  text-align: center;
+  background-color: #aaa;
+}
+*/
+
+
+
+/*
+.contact .envelope .top {
+		position: absolute;
+		top: -3px;
+		left: 0px;
+		width: 100%;
+		height: 73px;
+		z-index: 30;
+		overflow: hidden;
+						
+		transform-origin: top;
+		-ms-transform-origin: top;
+		-moz-transform-origin: top;
+		-o-transform-origin: top;
+		-webkit-transform-origin: top;
+					
+		transition: transform 300ms 150ms, z-index 0ms 150ms, height 300ms 0ms, top 300ms 0ms;
+		-ms-transition: -ms-transform 300ms 150ms, z-index 0ms 150ms, height 300ms 0ms, top 300ms 0ms;
+		-moz-transition: -moz-transform 300ms 150ms, z-index 0ms 150ms, height 300ms 0ms, top 300ms 0ms;
+		-o-transition: -o-transform 300ms 150ms, z-index 0ms 150ms, height 300ms 0ms, top 300ms 0ms;
+		-webkit-transition: -webkit-transform 300ms 150ms, z-index 0ms 150ms, height 300ms 0ms, top 300ms 0ms;
+}
+.contact:hover .envelope .top {
+		transition: transform 300ms 0ms, height 300ms 150ms, top 300ms 150ms;
+		-ms-transition: -ms-transform 300ms 0ms, height 300ms 150ms, top 300ms 150ms;
+		-moz-transition: -moz-transform 300ms 0ms, height 300ms 150ms, top 300ms 150ms;
+		-o-transition: -o-transform 300ms 0ms, height 300ms 150ms, top 300ms 150ms;
+		-webkit-transition: -webkit-transform 300ms 0ms, height 300ms 150ms, top 300ms 150ms;
+		
+		height: 10px;
+		top: -60px;
+		
+		transform: rotateX(180deg);
+		-ms-transform: rotateX(180deg);
+		-moz-transform: rotateX(180deg);
+		-o-transform: rotateX(180deg);
+		-webkit-transform: rotateX(180deg);
+}
+.contact .envelope .outer {
+		position: absolute;
+		bottom: 0px;
+		left: 0px;
+		border-left: 83px solid transparent;
+		border-right: 82px solid transparent;
+		border-top: 70px solid #EEE;
+}
+.contact .envelope .outer .inner {
+		position: absolute;
+		left: -81px;
+		top: -73px;
+		border-left: 81px solid transparent;
+		border-right: 80px solid transparent;
+		border-top: 68px solid #333;
+}
+*/
